@@ -2,12 +2,12 @@ import pool from '../database/db';
 
 export interface Material {
   id_material: number;
+  sessao_id: string;
   titulo: string;
   tipo: string;
-  link?: string | null;
-  descricao?: string | null;
-  id_enviado_por?: number | null;
-  criado_em?: string;
+  link: string | null;
+  descricao: string | null;
+  criado_em: string;
 }
 
 class MaterialRepository {
@@ -16,19 +16,13 @@ class MaterialRepository {
     return result.rows;
   }
 
-  async create(
-    titulo: string,
-    tipo: string,
-    link: string | null,
-    descricao: string | null,
-    id_enviado_por: number | null
-  ): Promise<Material> {
+  async create(sessao_id: string, titulo: string, tipo: string, link: string | null, descricao: string | null): Promise<Material> {
     const query = `
-      INSERT INTO material (titulo, tipo, link, descricao, id_enviado_por)
-      VALUES ($1, $2, $3, $4, $5)
+      INSERT INTO material (sessao_id, titulo, tipo, link, descricao)
+      VALUES ($1,$2,$3,$4,$5)
       RETURNING *;
     `;
-    const result = await pool.query(query, [titulo, tipo, link, descricao, id_enviado_por]);
+    const result = await pool.query(query, [sessao_id, titulo, tipo, link, descricao]);
     return result.rows[0];
   }
 }

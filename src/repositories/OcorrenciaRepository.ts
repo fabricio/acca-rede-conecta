@@ -2,12 +2,12 @@ import pool from '../database/db';
 
 export interface Ocorrencia {
   id_ocorrencia: number;
+  sessao_id: string;
   descricao: string;
-  data_ocorrencia?: string | null;
-  status?: string | null;
-  id_usuario?: number | null;
-  id_apoio?: number | null;
-  criado_em?: string;
+  data_ocorrencia: string | null;
+  status: string | null;
+  id_apoio: number | null;
+  criado_em: string;
 }
 
 class OcorrenciaRepository {
@@ -16,19 +16,13 @@ class OcorrenciaRepository {
     return result.rows;
   }
 
-  async create(
-    descricao: string,
-    data_ocorrencia: string | null,
-    status: string | null,
-    id_usuario: number | null,
-    id_apoio: number | null
-  ): Promise<Ocorrencia> {
+  async create(sessao_id: string, descricao: string, data_ocorrencia: string | null, status: string | null, id_apoio: number | null): Promise<Ocorrencia> {
     const query = `
-      INSERT INTO ocorrencia (descricao, data_ocorrencia, status, id_usuario, id_apoio)
-      VALUES ($1, $2, $3, $4, $5)
+      INSERT INTO ocorrencia (sessao_id, descricao, data_ocorrencia, status, id_apoio)
+      VALUES ($1,$2,$3,$4,$5)
       RETURNING *;
     `;
-    const result = await pool.query(query, [descricao, data_ocorrencia, status, id_usuario, id_apoio]);
+    const result = await pool.query(query, [sessao_id, descricao, data_ocorrencia, status, id_apoio]);
     return result.rows[0];
   }
 }

@@ -2,8 +2,6 @@ import pool from '../database/db';
 
 export interface Usuario {
   id_usuario: number;
-  email?: string | null;
-  senha?: string | null;
   perfil: string;
   idade?: number | null;
   identidade_genero?: string | null;
@@ -27,8 +25,6 @@ class UsuarioRepository {
   }
 
   async create(data: {
-    email?: string | null;
-    senha?: string | null;
     perfil: string;
     idade?: number | null;
     identidade_genero?: string | null;
@@ -39,8 +35,6 @@ class UsuarioRepository {
     cidade?: string | null;
   }): Promise<Usuario> {
     const {
-      email = null,
-      senha = null,
       perfil,
       idade = null,
       identidade_genero = null,
@@ -53,13 +47,11 @@ class UsuarioRepository {
 
     const query = `
       INSERT INTO usuario
-        (email, senha, perfil, idade, identidade_genero, tipo_violencia, tipo_apoio, endereco, estado, cidade)
+        (perfil, idade, identidade_genero, tipo_violencia, tipo_apoio, endereco, estado, cidade)
       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
       RETURNING *;
     `;
     const result = await pool.query(query, [
-      email,
-      senha,
       perfil,
       idade,
       identidade_genero,
