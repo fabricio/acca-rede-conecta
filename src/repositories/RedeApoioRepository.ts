@@ -1,5 +1,5 @@
 import { pool } from '../config/db';
-import { RedeApoio, RedeApoioCreate } from '../models/userModels';
+import { RedeApoio, RedeApoioCreate } from '../models/redeApoioModels';
 
 class RedeApoioRepository {
 
