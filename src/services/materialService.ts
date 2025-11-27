@@ -5,7 +5,7 @@ class MaterialService {
         return materialRepository.create(
             id_usuario,
             data.titulo,
-            DataTransfer.tipo,
+            data.tipo,
             data.link,
             data.descricao
         );
@@ -13,4 +13,4 @@ class MaterialService {
         return materialRepository.findAll();
     }
 }
-export const MaterialService = new MaterialService();
+export const materialService = new MaterialService();

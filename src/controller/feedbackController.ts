@@ -7,7 +7,7 @@ class FeedbackController {
         const id_usuario = Number(req.body.id_usuario);
         const nova = await feedbackService.criar(id_usuario, req.body);
         res.json(nova);
-        catch (err: any){
+    } catch (err: any){
         res.status(400).json({ erro: err.menssage });
         }
     }
@@ -16,6 +16,5 @@ class FeedbackController {
         res.json(lista);
     }
   }
-}
 
 export const feedbackController = new FeedbackController();

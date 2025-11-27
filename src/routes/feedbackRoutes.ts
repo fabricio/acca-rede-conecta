@@ -1,4 +1,4 @@
-import { router } from "express";
+import { Router } from "express";
 import { feedbackController } from "../controller/feedbackController";
 
 const routes =  Router();

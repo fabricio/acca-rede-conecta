@@ -14,7 +14,7 @@ class FeedbackRepository {
     return result.rows;
   }
 
-  async create(id_usuario: number | null, mensagem: string): Promise<Feedback> {
+  async create(id_usuario: number | null, mensagem: string, data_envio: string, id_feedback: number): Promise<Feedback> {
     const query = `
       INSERT INTO feedback (id_usuario, mensagem)
       VALUES ($1,$2)

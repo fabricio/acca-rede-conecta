@@ -1,6 +1,6 @@
 
 import { Request, Response } from "express";
-import * as usuarioService from "../services/usuarioService";
+import * as usuarioService from "../services/UsuarioService";
 
 
 class UsuarioController {

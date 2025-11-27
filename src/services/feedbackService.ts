@@ -1,6 +1,6 @@
 import { feedbackRepository } from "../repositories/FeedbackRepository";
  
-class FeedbackRepository {
+class FeedbackService {
     async criar(id_usuario: number, data: any){
     return feedbackRepository.create(
         id_usuario,
@@ -13,4 +13,4 @@ class FeedbackRepository {
         return feedbackRepository.findAll();
     }
     }
-    export const feedbackService = new feedbackService();
+    export const feedbackService = new FeedbackService();
