@@ -1,0 +1,35 @@
+# Dependencies
+/node_modules
+/package-lock.json
+
+# Build outputs
+/dist
+/build
+/lib
+
+# Logs
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/lerna-debug.log*
+/logs
+/log
+
+# Environment
+.env
+.env.development
+.env.production
+.env.test
+
+# IDE/Editor
+# Visual Studio Code
+.vscode/
+
+# OS/System
+.DS_Store
+Thumbs.db
+
+# TypeScript
+# Ignora arquivos .js e .d.ts gerados a partir de .ts
+*.js
+*.d.ts
